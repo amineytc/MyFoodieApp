@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="organic">#6A6F4C</color>
+    <color name="butter">#CBB89D</color>
+    <color name="coconut">#EDE1D2</color>
+    <color name="natural">#806044</color>
+    <color name="palm_oil">#5D2510</color>
+    <color name="cocoa">#412F26</color>
+    <color name="blue_gray">#ECEFF1</color>
 </resources>
