@@ -64,18 +64,16 @@ class HomeFragment : Fragment() {
                 Glide.with(this)
                     .load(data.strMealThumb)
                     .into(binding.randomImage)
-
-                /*
-                val pass = HomeFragmentDirections.actionHomeFragmentToMealHomeFragment(
-                    data.idMeal,
-                    data.strMeal,
-                    data.strMealThumb)
-
-                Navigation.findNavController(view).navigate(pass)
-                 */
-
             }
 
+            binding.randomImage.setOnClickListener {
+                val pass = HomeFragmentDirections.actionHomeFragmentToMealHomeFragment(
+                        data.idMeal,
+                data.strMeal,
+                data.strMealThumb)
+
+                Navigation.findNavController(binding.randomImage).navigate(pass)
+            }
         }
     }
 }
