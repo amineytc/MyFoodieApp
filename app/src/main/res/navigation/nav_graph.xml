@@ -25,9 +25,6 @@
             android:name="mealId"
             app:argType="string"
             app:nullable="true" />
-        <action
-            android:id="@+id/action_mealHomeFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
         <argument
             android:name="mealName"
             app:argType="string"
@@ -45,6 +42,9 @@
         <action
             android:id="@+id/action_homeFragment_to_mealHomeFragment"
             app:destination="@id/mealHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -55,5 +55,9 @@
         android:id="@+id/categoryFragment"
         android:name="com.amineaytac.myfoodieapp.ui.category.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

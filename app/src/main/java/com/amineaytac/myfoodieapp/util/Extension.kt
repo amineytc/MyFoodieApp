@@ -1,4 +1,4 @@
-package com.amineaytac.myfoodieapp
+package com.amineaytac.myfoodieapp.util
 
 import android.view.View
 

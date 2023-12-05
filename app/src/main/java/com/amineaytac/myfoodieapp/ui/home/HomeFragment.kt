@@ -1,5 +1,6 @@
 package com.amineaytac.myfoodieapp.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,10 +10,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amineaytac.myfoodieapp.R
 import com.amineaytac.myfoodieapp.databinding.FragmentHomeBinding
+import com.amineaytac.myfoodieapp.ui.category.CategoryFragment
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -24,6 +27,10 @@ class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private val homeVM : HomeViewModel by viewModels()
     private val homeCategoryAdapter by lazy {HomeCategoryAdapter()}
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +46,19 @@ class HomeFragment : Fragment() {
         getRandomMeal()
         getCategories()
         setCategoryHomeRecView()
+        onCategoryItemClick()
+    }
+
+    @SuppressLint("SuspiciousIndentation")
+    private fun onCategoryItemClick() {
+        homeCategoryAdapter.onCategoryCliclk={data->
+            val fragment = CategoryFragment()
+            val bundle = Bundle()
+                bundle.putString("categoryName",data.strCategory)
+                fragment.arguments=bundle
+
+            findNavController().navigate(R.id.action_homeFragment_to_categoryFragment,bundle)
+        }
     }
 
     private fun setCategoryHomeRecView() {
@@ -64,15 +84,15 @@ class HomeFragment : Fragment() {
                 Glide.with(this)
                     .load(data.strMealThumb)
                     .into(binding.randomImage)
-            }
 
-            binding.randomImage.setOnClickListener {
-                val pass = HomeFragmentDirections.actionHomeFragmentToMealHomeFragment(
+                binding.randomImage.setOnClickListener {
+                    val pass = HomeFragmentDirections.actionHomeFragmentToMealHomeFragment(
                         data.idMeal,
-                data.strMeal,
-                data.strMealThumb)
+                        data.strMeal,
+                        data.strMealThumb)
 
-                Navigation.findNavController(binding.randomImage).navigate(pass)
+                    Navigation.findNavController(binding.randomImage).navigate(pass)
+                }
             }
         }
     }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.amineaytac.myfoodieapp.data.model.meal.Meal
 import com.amineaytac.myfoodieapp.databinding.FragmentMealHomeBinding
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,12 +32,19 @@ class MealHomeFragment : Fragment() {
 
         getmealInformation()
         observeGetMealInformationData()
+
+        binding.btnFav.setOnClickListener{
+            saveMeal?.let{meal-> mealVM.upsertMeal(meal)}
+        }
     }
 
+
+    private var saveMeal: Meal?=null
     private fun observeGetMealInformationData() {
         mealVM.getMealInformationLiveData.observe(requireActivity()) { data ->
-            binding.category.text = "Category:" + data.strCategory
-            binding.location.text = "Location" + data.strArea
+            saveMeal=data
+            binding.category.text = "Category: " + data.strCategory
+            binding.location.text = "Location: " + data.strArea
             binding.second.text = data.strInstructions
         }
     }

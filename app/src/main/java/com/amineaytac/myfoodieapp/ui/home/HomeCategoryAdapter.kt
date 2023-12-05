@@ -2,17 +2,18 @@ package com.amineaytac.myfoodieapp.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.amineaytac.myfoodieapp.data.model.Category
+import com.amineaytac.myfoodieapp.data.model.category.Category
 import com.amineaytac.myfoodieapp.databinding.ItemCategoriesBinding
 import com.bumptech.glide.Glide
 
 class HomeCategoryAdapter():RecyclerView.Adapter<HomeCategoryAdapter.ViewHolder>(){
 
-    class ViewHolder(val binding :ItemCategoriesBinding):RecyclerView.ViewHolder(binding.root)
+    lateinit var onCategoryCliclk : ((Category)->Unit)
+
+    inner class ViewHolder(val binding :ItemCategoriesBinding):RecyclerView.ViewHolder(binding.root)
 
     private val diffUtil = object : DiffUtil.ItemCallback<Category>(){
 
@@ -42,6 +43,7 @@ class HomeCategoryAdapter():RecyclerView.Adapter<HomeCategoryAdapter.ViewHolder>
         holder.binding.categoryName.text=data.strCategory
 
         holder.itemView.setOnClickListener {
+            onCategoryCliclk.invoke(data)
         }
     }
 }

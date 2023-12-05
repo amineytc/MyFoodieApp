@@ -14,9 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-
-
     <LinearLayout
         android:id="@+id/linearHome"
         android:layout_width="0dp"
@@ -33,12 +30,6 @@
             android:textColor="@color/organic"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/search" />
     </LinearLayout>
 
     <TextView
@@ -103,9 +94,10 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categories_recyc"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/_8sdp"
+                    android:clipToPadding="false"/>
             </androidx.cardview.widget.CardView>
-        
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topGuideline"

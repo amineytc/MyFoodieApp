@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.amineaytac.myfoodieapp.data.model.Meal
+import com.amineaytac.myfoodieapp.data.model.meal.Meal
 import com.amineaytac.myfoodieapp.databinding.ItemFavoriteBinding
 import com.bumptech.glide.Glide
 

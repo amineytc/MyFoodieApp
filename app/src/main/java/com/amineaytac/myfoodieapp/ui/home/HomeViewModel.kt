@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amineaytac.myfoodieapp.data.model.Category
-import com.amineaytac.myfoodieapp.data.model.Meal
-import com.amineaytac.myfoodieapp.data.repo.HomeRepository
+import com.amineaytac.myfoodieapp.data.model.category.Category
+import com.amineaytac.myfoodieapp.data.model.meal.Meal
+import com.amineaytac.myfoodieapp.data.repo.MealRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val homeRepository: HomeRepository
+    private val mealRepository: MealRepository
 ) : ViewModel(){
 
     private val _getRandomMealLiveData = MutableLiveData<Meal>()
@@ -25,8 +25,8 @@ class HomeViewModel @Inject constructor(
         @SuppressLint("SuspiciousIndentation")
         fun getRandomMeal(){
             viewModelScope.launch {
-                val response = homeRepository.getRandomMeal()
-                    response.body()!!.meals.let {
+                val response = mealRepository.getRandomMeal()
+                    response.data!!.let {
                         _getRandomMealLiveData.postValue(it?.get(0))
                     }
             }
@@ -37,14 +37,10 @@ class HomeViewModel @Inject constructor(
 
         fun getCategoriesHome(){
             viewModelScope.launch {
-                val response = homeRepository.getCategoryMeal()
-                if(response.isSuccessful){
-                    response.body()?.categories.let{
-                        if(it!=null){
+                val response = mealRepository.getCategoryMeal()
+                    response.data!!.let{
                             _getCategoryStateFlow.emit(it)
-                        }
                     }
-                }
             }
         }
 }

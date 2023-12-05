@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amineaytac.myfoodieapp.data.model.Meal
+import com.amineaytac.myfoodieapp.data.model.meal.Meal
 import com.amineaytac.myfoodieapp.data.repo.MealRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -32,5 +32,13 @@ class MealHomeViewModel @Inject constructor(
         }
     }
 
+    fun upsertMeal(meal: Meal)=viewModelScope.launch {
+        mealRepository.upsertMeal(meal)
+    }
 
+    fun deleteMeal(meal: Meal) = viewModelScope.launch {
+        mealRepository.deleteMeal(meal)
+    }
+
+    fun getSavedMeal()=mealRepository.getMealSaved
 }

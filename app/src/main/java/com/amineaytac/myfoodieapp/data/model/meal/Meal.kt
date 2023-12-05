@@ -1,13 +1,21 @@
-package com.amineaytac.myfoodieapp.data.model
+package com.amineaytac.myfoodieapp.data.model.meal
 
 
+
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+
+@Entity(tableName="mealInformation")
 data class Meal(
     @SerializedName("dateModified")
     val dateModified: Any?,
     @SerializedName("idMeal")
-    val idMeal: String?,
+    @PrimaryKey
+    @NonNull
+    val idMeal: String,
     @SerializedName("strArea")
     val strArea: String?,
     @SerializedName("strCategory")

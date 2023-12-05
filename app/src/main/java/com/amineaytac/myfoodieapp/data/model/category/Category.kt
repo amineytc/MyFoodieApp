@@ -1,4 +1,4 @@
-package com.amineaytac.myfoodieapp.data.model
+package com.amineaytac.myfoodieapp.data.model.category
 
 
 import com.google.gson.annotations.SerializedName

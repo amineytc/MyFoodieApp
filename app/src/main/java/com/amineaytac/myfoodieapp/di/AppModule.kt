@@ -1,6 +1,10 @@
 package com.amineaytac.myfoodieapp.di
 
-import com.amineaytac.myfoodieapp.data.source.MealApi
+import android.app.Application
+import androidx.room.Room
+import com.amineaytac.myfoodieapp.data.source.local.MealDao
+import com.amineaytac.myfoodieapp.data.source.local.MealDatabase
+import com.amineaytac.myfoodieapp.data.source.remote.MealApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,6 +49,17 @@ object AppModule {
     @Singleton
     fun provideMealApi(retrofit: Retrofit) : MealApi {
         return retrofit.create(MealApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application) : MealDatabase=
+        Room.databaseBuilder(app,MealDatabase::class.java,"meal.db").build()
+
+    @Provides
+    @Singleton
+    fun provideDao(database:MealDatabase):MealDao{
+        return database.getMealFromDao()
     }
 
 }

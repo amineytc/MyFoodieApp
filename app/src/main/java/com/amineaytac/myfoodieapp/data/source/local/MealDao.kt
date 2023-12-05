@@ -1,12 +1,11 @@
 package com.amineaytac.myfoodieapp.data.source.local
 
-import androidx.annotation.NonNull
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.amineaytac.myfoodieapp.data.model.Meal
+import com.amineaytac.myfoodieapp.data.model.meal.Meal
 import kotlinx.coroutines.flow.Flow
 
 @Dao

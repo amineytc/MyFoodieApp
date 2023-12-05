@@ -1,12 +1,14 @@
-package com.amineaytac.myfoodieapp
+package com.amineaytac.myfoodieapp.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.amineaytac.myfoodieapp.R
 import com.amineaytac.myfoodieapp.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.amineaytac.myfoodieapp.util.gone
+import com.amineaytac.myfoodieapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.splashFragment -> {
                     binding.bottomNavigationView.gone()
                 }
-                R.id.favoriteFragment->{
+                R.id.favoriteFragment ->{
                     binding.bottomNavigationView.visible()
                 }
                 R.id.homeFragment -> {

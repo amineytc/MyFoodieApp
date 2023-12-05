@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardUseCompatPadding="true"
+    app:strokeColor="@color/organic"
+    app:strokeWidth="@dimen/_2sdp"
     app:cardCornerRadius="@dimen/_8sdp"
     app:cardElevation="@dimen/_5sdp">
 
