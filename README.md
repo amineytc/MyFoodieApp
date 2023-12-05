@@ -16,7 +16,7 @@
 + Navigation
 + SSP&SDP
 + Coroutines
-+ ViewBinModel
++ View Model
 + Glide
 + Room
 + Hilt
