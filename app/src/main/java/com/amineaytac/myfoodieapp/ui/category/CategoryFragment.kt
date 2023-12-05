@@ -62,6 +62,4 @@ class CategoryFragment : Fragment() {
             categoryName=data.getString("categoryName").toString()
         }
     }
-
-
 }

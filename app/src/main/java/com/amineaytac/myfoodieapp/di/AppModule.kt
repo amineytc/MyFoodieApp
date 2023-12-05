@@ -61,5 +61,4 @@ object AppModule {
     fun provideDao(database:MealDatabase):MealDao{
         return database.getMealFromDao()
     }
-
 }

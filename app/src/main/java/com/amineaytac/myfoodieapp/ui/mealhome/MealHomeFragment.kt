@@ -38,7 +38,6 @@ class MealHomeFragment : Fragment() {
         }
     }
 
-
     private var saveMeal: Meal?=null
     private fun observeGetMealInformationData() {
         mealVM.getMealInformationLiveData.observe(requireActivity()) { data ->

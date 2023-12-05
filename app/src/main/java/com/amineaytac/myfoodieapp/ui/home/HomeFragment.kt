@@ -20,7 +20,6 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 

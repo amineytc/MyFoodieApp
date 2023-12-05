@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.amineaytac.myfoodieapp.R
-
-
 class SplashFragment : Fragment() {
 
     override fun onCreateView(

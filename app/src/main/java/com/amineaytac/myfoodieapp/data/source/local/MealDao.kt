@@ -7,10 +7,8 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.amineaytac.myfoodieapp.data.model.meal.Meal
 import kotlinx.coroutines.flow.Flow
-
 @Dao
 interface MealDao{
-
     @Insert(onConflict=OnConflictStrategy.REPLACE)
     suspend fun upsertMeal(meal: Meal)
 

@@ -35,6 +35,7 @@ class HomeViewModel @Inject constructor(
     private var _getCategoryStateFlow = MutableStateFlow<List<Category?>>(emptyList())
     var getCategoriesStateFlow : StateFlow<List<Category?>> = _getCategoryStateFlow
 
+        @SuppressLint("SuspiciousIndentation")
         fun getCategoriesHome(){
             viewModelScope.launch {
                 val response = mealRepository.getCategoryMeal()

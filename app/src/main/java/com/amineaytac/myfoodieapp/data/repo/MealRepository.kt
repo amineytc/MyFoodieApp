@@ -39,22 +39,6 @@ class MealRepository @Inject constructor(
 
     val getMealSaved = db.getSavedMeal()
 
-    /*
-    suspend fun getCategory(categoryName:String): Response<DetailCategoryResponse> {
-        val response = mealApi.getCategory(categoryName)
-        if(response.isSuccessful){
-            Log.d("testApp","success to connected to category")
-            Log.d("testApp",response.code().toString())
-        }else{
-            Log.d("testApp","failed to connected to category")
-            Log.d("testApp",response.code().toString())
-        }
-        return response
-
-    }
-
-     */
-
     suspend fun getRandomMeal() =try{
         Resource.Success(mealApi.getRandomMeal().body()?.meals.orEmpty())
     }catch (e:Exception){
